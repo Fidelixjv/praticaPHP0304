@@ -16,7 +16,6 @@
 
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["novoLivro"])) {
-        // Passo 1: Estoque inicial
         $livros = [
             "O senhor dos Anéis",
             "harry Potter e a Pedra Filosofal",
@@ -30,19 +29,17 @@
             echo ($i + 1) . ". $titulo<br>";
         }
 
-        // Passo 2: Adição de um novo livro (entrada de estoque)
         $novoLivro = $_POST["novoLivro"];
-        array_push($livros, $novoLivro); // Adiciona ao final do array
+        array_push($livros, $novoLivro);
 
         echo "<br><strong>Após chegada do novo livro:</strong><br>";
         foreach ($livros as $i => $titulo) {
             echo ($i + 1) . ". $titulo<br>";
         }
 
-        // Passo 3: Venda de um livro (remoção do 3º da lista, índice 2)
         if (isset($livros[2])) {
             unset($livros[2]);
-            // Reorganiza os índices (opcional para exibição)
+
             $livros = array_values($livros);
         }
 
